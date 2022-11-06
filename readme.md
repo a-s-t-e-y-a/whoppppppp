@@ -11,4 +11,5 @@ for devops
 2.) AWS..
 3.) linux centos
 
-react, node as usual 
+react, node , next js , typescript ,as usual 
+Rust for multithread server side rendering
