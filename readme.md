@@ -1,4 +1,4 @@
-# Load blancing technology used in this project
+# core technology used in this project
 
 | technology                                |
 | ----------------------------------------- |
@@ -12,18 +12,32 @@
 
 # for devops
 
-1.) Docker
-2.) AWS..
-3.) linux centos
-4.) jenkins
-5.) and we are using git baby
-6.) chef
+| devops tech             |
+| ----------------------- |
+| AWS                     |
+| chef                    |
+| Jenkins                 |
+| git                     |
+| docker                  |
+| kubernetes              |
+| digital ocean(for help) |
+| how can we forgot linux |
 
 # for testing and developing api
 
-prisma , chai , mocha , restify and postman
+| testing |
+| ------- |
+| chai    |
+| mocha   |
+| restify |
+| prisma  |
+| postman |
 
 # extra resources
 
-1.)digital ocean
-2.)mockaroo
+| extra                           |
+| ------------------------------- |
+| digital ocean                   |
+| mockaroo                        |
+| rapid api                       |
+| documentation of different tech |
