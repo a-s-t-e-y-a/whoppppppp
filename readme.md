@@ -1,20 +1,29 @@
-Technologies used in this project..
+# Load blancing technology used in this project
 
-1.) Nginx
-2.) gRPC
-3.) Protobuffs
+| technology                                |
+| ----------------------------------------- |
+| React                                     |
+| Tailwindcss                               |
+| Nextjs                                    |
+| Node                                      |
+| Mongodb                                   |
+| mongoose                                  |
+| Rust for multithread server side rendring |
 
-for devops
+# for devops
 
 1.) Docker
 2.) AWS..
 3.) linux centos
 4.) jenkins
 5.) and we are using git baby
-
-react, node , next js , typescript ,as usual
-Rust for multithread server side rendering
+6.) chef
 
 # for testing and developing api
 
-prisma , chai , mocha , and restify
+prisma , chai , mocha , restify and postman
+
+# extra resources
+
+1.)digital ocean
+2.)mockaroo
