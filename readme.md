@@ -7,7 +7,7 @@
 | Nextjs                                    |
 | Node                                      |
 | Mongodb                                   |
-| mongoose                                  |
+| prisma                                    |
 | Rust for multithread server side rendring |
 
 # for devops
@@ -30,7 +30,6 @@
 | chai    |
 | mocha   |
 | restify |
-| prisma  |
 | postman |
 
 # extra resources
@@ -41,3 +40,10 @@
 | mockaroo                        |
 | rapid api                       |
 | documentation of different tech |
+
+# note to be noted
+
+Access to a MongoDB 4.2+ server with a replica set deployment. We recommend using MongoDB Atlas.
+
+The MongoDB database connector uses transactions to support nested writes. Transactions requires a replica set deployment. The easiest way to deploy a replica set is with Atlas. It's free to get started.
+{link of resources :- https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/mongodb-node-mongodb}
