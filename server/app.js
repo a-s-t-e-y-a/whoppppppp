@@ -14,7 +14,7 @@ app.use(
 );
 // using all kinds of routes in the system
 
-app.use(signup_route);
 app.use(bodyParser.json());
 app.use(express.json());
+app.use(signup_route);
 module.exports = app;
