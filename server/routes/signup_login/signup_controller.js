@@ -1,8 +1,7 @@
 const { phoneLookup } = require("phone-number-lookup");
 const validator = require("email-validator");
 const bcrypt = require("bcrypt");
-const { PrismaClient } = require("@prisma/client");
-const prisma = new PrismaClient();
+const prisma = require("../../helper/prisma");
 async function signup_controller(req, res) {
   const { email, password, phone, username, country_code } = req.body;
 

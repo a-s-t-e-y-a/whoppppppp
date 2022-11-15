@@ -1,9 +1,9 @@
 const jwt = require("jsonwebtoken");
-const { PrismaClient } = require("@prisma/client");
 const bcrypt = require("bcrypt");
-const prisma = new PrismaClient();
+const prisma = require("../../helper/prisma.js");
 async function login_controller(req, res) {
   const { username, password } = req.body;
+  console.log(req.body);
   const user = await prisma.user.findFirst({
     where: {
       username: username,
@@ -11,28 +11,26 @@ async function login_controller(req, res) {
   });
   // check if user exist or not
   if (!user) {
-    res.status(401).json({
+    return res.status(401).json({
       message: "User not found enter valid credentials",
     });
   }
 
-  bcrypt.compare(password, user.password, (err, res) => {
+  bcrypt.compare(password, user.password, (err, result) => {
     if (err) {
-      res.status(400).json({
+      return res.status(400).json({
         messgae: "Some error ocuured",
       });
     }
-    if (res == true) {
-      const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY, {
-        algorithm: "RS256",
-      });
-      res.status(200).json({
+    if (result == true) {
+      const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY);
+      return res.status(200).json({
         message: "You login scussefully",
         data: user,
         token: token,
       });
     } else {
-      res.status(400).json({
+      return res.status(400).json({
         message: "Enter valid credentials",
       });
     }
