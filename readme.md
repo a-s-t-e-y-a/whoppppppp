@@ -1,3 +1,10 @@
+# to watch live (coustom domain gonna add soon)
+
+http://3.7.68.251:3000/
+
+(after some point you need api key and have to follow every authentication
+step to access api)
+
 # core technology used in this project
 
 | technology                                |
