@@ -24,15 +24,15 @@ model User {
   }
 model Sys_info{
     id String @id @default(auto()) @map("_id") @db.ObjectId
-    ip_address String
-    operating_system String 
+    ip_address String[]
+    operating_system String[] 
     longitude String?
     latitude String?
-    totalmem Int 
+    totalmem Int[]
     cpu Json
-    freemem Int
-    hostname String
-    os_version String
-    uptime Int
+    freemem Int[]
+    hostname String[]
+    os_version String[]
+    uptime Int[]
     userId String @db.ObjectId @unique
   }
