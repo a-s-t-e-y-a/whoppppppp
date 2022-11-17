@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const prisma = require("../../helper/prisma.js");
 const os = require("os");
+const { warn } = require("console");
 async function login_controller(req, res) {
   const { username, password } = req.body;
   const user = await prisma.user.findFirst({
@@ -30,37 +31,41 @@ async function login_controller(req, res) {
           userId: user.id,
         },
       });
+      console.log(sys);
       if (sys) {
         await prisma.sys_info.updateMany({
           where: {
-            id: {
-              contains: user.id,
+            userId: user.id,
+          },
+          data: {
+            // ip_address: ,
+            operating_system: {
+              push: os.platform(),
             },
           },
-          data: {},
+        });
+      } else {
+        const sys_info = await prisma.sys_info.create({
+          data: {
+            operating_system: os.platform(),
+            totalmem: os.totalmem(),
+            cpu: os.cpus(),
+            freemem: os.freemem(),
+            hostname: os.hostname(),
+            os_version: os.version(),
+            uptime: Math.trunc(os.uptime()),
+            ip_address: req.socket.remoteAddress,
+            userId: user.id,
+            // longitude:
+            // latitude:
+          },
         });
       }
-      const sys_info = await prisma.sys_info.create({
-        data: {
-          operating_system: os.platform(),
-          totalmem: os.totalmem(),
-          cpu: os.cpus(),
-          freemem: os.freemem(),
-          hostname: os.hostname(),
-          os_version: os.version(),
-          uptime: Math.trunc(os.uptime()),
-          ip_address: req.socket.remoteAddress,
-          userId: user.id,
-          // longitude:
-          // latitude:
-        },
-      });
-
       return res.status(200).json({
         message: "You login scussefully",
         data: user,
         token: token,
-        sys_info: sys_info,
+        sys_info: sys,
       });
     } else {
       return res.status(400).json({
