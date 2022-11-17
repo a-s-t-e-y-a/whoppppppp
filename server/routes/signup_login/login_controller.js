@@ -5,6 +5,8 @@ const os = require("os");
 const { warn } = require("console");
 async function login_controller(req, res) {
   const { username, password } = req.body;
+  let sys_info;
+  let sys;
   const user = await prisma.user.findFirst({
     where: {
       username: username,
@@ -26,7 +28,7 @@ async function login_controller(req, res) {
     if (result == true) {
       const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY);
       // getting user sys_info and stored on the database
-      const sys = await prisma.sys_info.findUnique({
+      sys = await prisma.sys_info.findUnique({
         where: {
           userId: user.id,
         },
@@ -42,10 +44,28 @@ async function login_controller(req, res) {
             operating_system: {
               push: os.platform(),
             },
+            totalmem: {
+              push: os.totalmem(),
+            },
+            cpu: {
+              push: os.cpus(),
+            },
+            freemem: {
+              push: os.freemem(),
+            },
+            hostname: {
+              push: os.hostname(),
+            },
+            os_version: {
+              push: os.version(),
+            },
+            uptime: {
+              push: Math.trunc(os.uptime()),
+            },
           },
         });
       } else {
-        const sys_info = await prisma.sys_info.create({
+        sys_info = await prisma.sys_info.create({
           data: {
             operating_system: os.platform(),
             totalmem: os.totalmem(),
@@ -65,7 +85,7 @@ async function login_controller(req, res) {
         message: "You login scussefully",
         data: user,
         token: token,
-        sys_info: sys,
+        sys_info: sys_info ? sys_info : sys,
       });
     } else {
       return res.status(400).json({

@@ -29,7 +29,7 @@ model Sys_info{
     longitude String?
     latitude String?
     totalmem Int[]
-    cpu Json
+    cpu Json[]
     freemem Int[]
     hostname String[]
     os_version String[]
