@@ -1,4 +1,4 @@
-# to watch live (coustom domain gonna add soon)
+# to watch live (custom domain gonna add soon)
 
 http://3.7.68.251:3000/
 
