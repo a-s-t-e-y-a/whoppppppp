@@ -36,3 +36,18 @@ model Sys_info{
     uptime Int[]
     userId String @db.ObjectId @unique
   }
+model Post{
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+    like Int?
+    image String?
+    text String?
+    tags String[]
+
+  }
+model Comments{
+      id String @id @default(auto()) @map("_id") @db.ObjectId
+      user_name String
+      user_id String
+      text_comment String
+      time DateTime
+  }
