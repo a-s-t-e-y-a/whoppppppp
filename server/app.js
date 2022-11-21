@@ -10,6 +10,7 @@ const signup_route = require("./routes/signup_login/signup.route");
 const getRoute = require("./routes/get_all_user/get_all_user.js");
 const sysRoute = require("./routes/get_all_user/get_all_sys_info.js");
 const login_route = require("./routes/signup_login/login.route.js");
+const postRoute = require("./routes/post/post_post_route");
 app.use(
   cors({
     origin: "http://localhost:8000",
@@ -26,4 +27,5 @@ app.use(signup_route);
 app.use(sysRoute);
 app.use(login_route);
 app.use(getRoute);
+app.use(postRoute);
 module.exports = app;

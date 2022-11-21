@@ -41,8 +41,6 @@ model Sys_info{
   }
 model Post{
     id String @id @default(auto()) @map("_id") @db.ObjectId
-    user_name String
-    user_id String
     like Int?
     image String?
     text String?
